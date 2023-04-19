@@ -24,6 +24,9 @@
 
 
     - Adding strongly typed views (models to views)
+
+
+    - @( C# code here ) if not allo code is noticed.
 *@
 
 @model Comic_Book_Gallery.Models.ComicBook
@@ -33,26 +36,33 @@
     ViewBag.Title = Model.DisplayText; // Tab title
 }
 
-<div>
+<h2>@Model.DisplayText</h2>
 
-    <h1>    @Model.SeriesTitle        </h1>
-    <h2>    Issue: #@Model.IssueNumber </h2>
-
-    <h5>    Description:              </h5>
-    <div>   @Html.Raw(Model.DescriptionHtml)    </div>
-
-    @if (Model.Artists.Length > 0)
-    {
-        <h5>    Artist:     </h5>
-        <div>
-            <ul>
-                @foreach (var artist in Model.Artists)
-                {
-                    <li>@artist.Role: @artist.Name</li>
-                }
-            </ul>
+<div class="row">           <!-- boostrap css classes -->
+    <div class="col-md-6">
+        <div class="well">
+            <h5><label>Series Title:</label> @Model.SeriesTitle</h5>
+            <h5><label>Issue #:</label> @Model.IssueNumber</h5>
+            <h5><label>Favorite:</label> @(Model.Favorite ? "Yes" : "No")</h5>
+            @if (Model.Artists.Length > 0)
+            {
+                <h5>Artist:</h5>
+                <div>
+                    <ul>
+                        @foreach (var artist in Model.Artists)
+                        {
+                            <li>@artist.Role: @artist.Name</li>
+                        }
+                    </ul>
+                </div>
+            }
         </div>
-    }
-
+        <h5>Description</h5>
+        <p>@Html.Raw(Model.DescriptionHtml)</p>
+    </div>
+    <div class="col-md-6">
+        <img src="~/Images/@Model.CoverImageFileName""
+             alt="@Model.DisplayText" class="img-responsive" />
+    </div>
 </div>
 
