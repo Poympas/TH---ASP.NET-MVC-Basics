@@ -18,19 +18,17 @@ namespace Comic_Book_Gallery.Controllers
         - Many websites can be hosted on the same machine using different port numbers.
 
 
-        - ActionResult is mom class of RedirectResult and ContentResult.
+        - ActionResult is mom class of RedirectResult, ContentResult and ViewResult.
         - Controller base class provides methods Content(string) and Redirect(string)
+        
+        
+        - View goes to folder Views/Shared/Detail.cshtml
      */
     public class ComicBooksController : Controller
     {
         public ActionResult Detail()
         {
-            if (DateTime.Today.DayOfWeek == DayOfWeek.Monday)
-            {
-                return Redirect("/");
-            }
-
-            return Content("This is a test.\n I will be gone soon.\n Appriciate me while I'm here. \n Would you kindly?");
+            return View();
 
         }
     }
