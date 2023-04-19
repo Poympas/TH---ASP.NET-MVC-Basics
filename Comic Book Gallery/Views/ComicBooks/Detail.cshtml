@@ -2,7 +2,10 @@
 
 <!-- This is an HTML-style comment in a CSHTML file -->
 <!-- This View coresponds to Controller ComicBook and its Action Detail -->
+
 @*
+
+
     - Starting a line with @ specifies that we are using C#.
     - C# content is escaped. You need to use Html.Raw().
     - You can make changes in the View source and refresh the webpage without rerunning it.
@@ -26,7 +29,9 @@
     - Adding strongly typed views (models to views)
 
 
-    - @( C# code here ) if not allo code is noticed.
+    - @( C# code here ) if not all code is noticed.
+
+
 *@
 
 @model Comic_Book_Gallery.Models.ComicBook
@@ -38,7 +43,8 @@
 
 <h2>@Model.DisplayText</h2>
 
-<div class="row">           <!-- boostrap css classes -->
+<div class="row">
+    <!-- boostrap css classes -->
     <div class="col-md-6">
         <div class="well">
             <h5><label>Series Title:</label> @Model.SeriesTitle</h5>
@@ -61,7 +67,7 @@
         <p>@Html.Raw(Model.DescriptionHtml)</p>
     </div>
     <div class="col-md-6">
-        <img src="~/Images/@Model.CoverImageFileName""
+        <img src="~/Images/@Model.CoverImageFileName"
              alt="@Model.DisplayText" class="img-responsive" />
     </div>
 </div>
