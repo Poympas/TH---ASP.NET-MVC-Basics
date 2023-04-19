@@ -19,35 +19,50 @@
 @* This is a Razor-style comment in a CSHTML file *@
 
 <!-- This is an HTML-style comment in a CSHTML file -->
-
 <!-- This View coresponds to Controller ComicBook and its Action Detail -->
-
-@* 
+@*
     - Starting a line with @ specifies that we are using C#.
     - C# content is escaped. You need to use Html.Raw().
     - You can make changes in the View source and refresh the webpage without rerunning it.
+
+
+    - Loop with @.
+    - <ul> : unordered list
+    - <li> : list item
+    - Ctrl+K, Ctrl+C to comment out a block of code, and Ctrl+K, Ctrl+U to uncomment a block of code.
+    - If in @.
 *@
 
 <html>
 
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title></title>
-    </head>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
 
-    <body>
-        <div>
+<body>
+    <div>
 
-            <h1>    @seriesTitle        </h1>
-            <h2>    Issue: @issueNumber </h2>
+        <h1>    @seriesTitle        </h1>
+        <h2>    Issue: @issueNumber </h2>
 
-            <h5>    Description:              </h5>
-            <div>   @Html.Raw(description)    </div>
+        <h5>    Description:              </h5>
+        <div>   @Html.Raw(description)    </div>
 
+        @if (artists.Length > 0) 
+        { 
             <h5>    Artist:     </h5>
-            <div>   @artists    </div>
+            <div>
+                <ul>
+                    @foreach (var artist in artists)
+                    {
+                        <li>@artist</li>
+                    }
+                </ul>
+            </div>
+        }
 
-        </div>
-    </body>
+    </div>
+</body>
 
 </html>
