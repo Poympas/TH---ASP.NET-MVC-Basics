@@ -1,5 +1,6 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Comic Book Detail";
 }
 
 <!DOCTYPE html>
@@ -24,38 +25,32 @@
     - ViewBag defined at controller and used here.
     - Because ViewBag is dynamic there is no InteliSense.
     - ViewBag properties are not case sensitive.
+
+
+    - html, head, body live in html, contents below are rendered from RenderBody()
 *@
 
-<html>
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
+<div>
 
-<body>
-    <div>
+    <h1>    @ViewBag.seriesTitle        </h1>
+    <h2>    Issue: #@ViewBag.issueNumber </h2>
 
-        <h1>    @ViewBag.seriesTitle        </h1>
-        <h2>    Issue: #@ViewBag.issueNumber </h2>
+    <h5>    Description:              </h5>
+    <div>   @Html.Raw(ViewBag.description)    </div>
 
-        <h5>    Description:              </h5>
-        <div>   @Html.Raw(ViewBag.description)    </div>
+    @if (ViewBag.artists.Length > 0)
+    {
+        <h5>    Artist:     </h5>
+        <div>
+            <ul>
+                @foreach (var artist in ViewBag.artists)
+                {
+                    <li>@artist</li>
+                }
+            </ul>
+        </div>
+    }
 
-        @if (ViewBag.artists.Length > 0) 
-        { 
-            <h5>    Artist:     </h5>
-            <div>
-                <ul>
-                    @foreach (var artist in ViewBag.artists)
-                    {
-                        <li>@artist</li>
-                    }
-                </ul>
-            </div>
-        }
+</div>
 
-    </div>
-</body>
-
-</html>
