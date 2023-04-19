@@ -1,17 +1,5 @@
 ﻿@{
     Layout = null;
-
-    var seriesTitle = "The Amazing Spider-Man";
-    var issueNumber = 700;
-    var description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
-    var artists = new string[]
-    {
-        "Script:    Dan Slott",
-        "Pencils:   Humberto Ramos",
-        "Inks:      Victor Olazaba",
-        "Colors:    Edgar Delgado",
-        "Letters:   Chris Eliopoulos"
-    };
 }
 
 <!DOCTYPE html>
@@ -31,6 +19,11 @@
     - <li> : list item
     - Ctrl+K, Ctrl+C to comment out a block of code, and Ctrl+K, Ctrl+U to uncomment a block of code.
     - If in @.
+
+
+    - ViewBag defined at controller and used here.
+    - Because ViewBag is dynamic there is no InteliSense.
+    - ViewBag properties are not case sensitive.
 *@
 
 <html>
@@ -43,18 +36,18 @@
 <body>
     <div>
 
-        <h1>    @seriesTitle        </h1>
-        <h2>    Issue: @issueNumber </h2>
+        <h1>    @ViewBag.seriesTitle        </h1>
+        <h2>    Issue: #@ViewBag.issueNumber </h2>
 
         <h5>    Description:              </h5>
-        <div>   @Html.Raw(description)    </div>
+        <div>   @Html.Raw(ViewBag.description)    </div>
 
-        @if (artists.Length > 0) 
+        @if (ViewBag.artists.Length > 0) 
         { 
             <h5>    Artist:     </h5>
             <div>
                 <ul>
-                    @foreach (var artist in artists)
+                    @foreach (var artist in ViewBag.artists)
                     {
                         <li>@artist</li>
                     }

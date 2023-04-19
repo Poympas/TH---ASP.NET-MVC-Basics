@@ -23,11 +23,28 @@ namespace Comic_Book_Gallery.Controllers
         
         
         - View goes to folder Views/Shared/Detail.cshtml
+
+
+        - Data is defined at the controller and sent to the view.
+        - ViewBag provides is a dynamic for this communication.
      */
     public class ComicBooksController : Controller
     {
         public ActionResult Detail()
         {
+
+            ViewBag.seriesTitle = "The Amazing Spider-Man";
+            ViewBag.issueNumber = 700;
+            ViewBag.description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
+            ViewBag.artists = new string[]
+            {
+                "Script:    Dan Slott",
+                "Pencils:   Humberto Ramos",
+                "Inks:      Victor Olazaba",
+                "Colors:    Edgar Delgado",
+                "Letters:   Chris Eliopoulos"
+            };
+
             return View();
 
         }
