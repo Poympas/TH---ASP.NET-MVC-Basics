@@ -1,5 +1,17 @@
 ﻿@{
     Layout = null;
+
+    var seriesTitle = "The Amazing Spider-Man";
+    var issueNumber = 700;
+    var description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
+    var artists = new string[]
+    {
+        "Script:    Dan Slott",
+        "Pencils:   Humberto Ramos",
+        "Inks:      Victor Olazaba",
+        "Colors:    Edgar Delgado",
+        "Letters:   Chris Eliopoulos"
+    };
 }
 
 <!DOCTYPE html>
@@ -10,6 +22,12 @@
 
 <!-- This View coresponds to Controller ComicBook and its Action Detail -->
 
+@* 
+    - Starting a line with @ specifies that we are using C#.
+    - C# content is escaped. You need to use Html.Raw().
+    - You can make changes in the View source and refresh the webpage without rerunning it.
+*@
+
 <html>
 
     <head>
@@ -19,7 +37,16 @@
 
     <body>
         <div>
-            <h1> I won't be here long. <br> Please do not forget me. </h1>
+
+            <h1>    @seriesTitle        </h1>
+            <h2>    Issue: @issueNumber </h2>
+
+            <h5>    Description:              </h5>
+            <div>   @Html.Raw(description)    </div>
+
+            <h5>    Artist:     </h5>
+            <div>   @artists    </div>
+
         </div>
     </body>
 
